@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Alpha:
+    name: Alpha
+
+Beta:
+    name: Beta
+
+Gamma:
+    name: Gamma
+
+
+
+
+<% 20.times do |n| %>
+
+user_<%= n %>:
+    name: <%= FFaker::Name.name %>
+
+<% end %>

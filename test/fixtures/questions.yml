@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+Quest1:
+    title: "what's new with DOTA2 v7.0 updates?"
+    private: "f"
+    user: Alpha
+
+Quest2:
+    title:  "why did they always send 4396 when clearlove appeard "
+    private: "t"
+    user: Gamma
+
+<% 3.times do |n| %>
+question_<%= n %>:
+    title: <%= FFaker::HipsterIpsum.sentence.gsub(/\.$/, "?") %>
+    private: "f"
+    user: Beta
+<% end %>

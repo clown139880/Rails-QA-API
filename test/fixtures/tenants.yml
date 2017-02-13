@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Lockman LLC
+  api_key: 2c8a38492cc770765ff0d0a837558a42
+
+two:
+  name: FFaker::Company.name
+  api_key: 2c8a38492cc770765ff0d0a837558a43

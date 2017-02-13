@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Answer1:
+    body: "wukong is so op!"
+    user: Alpha
+    question: Quest1
+
+Answer2:
+    body: "have waited so many years"
+    user: Beta
+    question: Quest1
+
+Answer3:
+    body: "UI like LOL,TALENT like HOS"
+    user: Gamma
+    question: Quest1
+    anonymous: true
+
+<% 3.times do |n| %>
+answer_<%= n %>:
+    body: FFaker::HipsterIpsum.sentence
+    user: Beta
+    question: Quest1
+<% end %>

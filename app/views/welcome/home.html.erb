@@ -1,0 +1,90 @@
+<table border="5">
+    <th>
+        项目
+    </th>
+    <th>
+        数量
+    </th>
+    <tr>
+        <td width="500">
+            问题
+        </td>
+        <td width="500">
+            <%= Question.count %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            回答
+        </td>
+        <td>
+            <%= Answer.count %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            用户
+        </td>
+        <td>
+            <%= Answer.count %>
+        </td>
+    </tr>
+</table>
+<table border="5" >
+    <tr>
+        <th width="500">
+            客户
+        </th>
+        <th width="500">
+            API调用次数
+        </th>
+    </tr>
+    <% Tenant.all.each do |tenant| %>
+    <tr>
+        <td>
+            <%= tenant.name %>
+        </td>
+        <td>
+            <%= @limits[tenant.api_key].nil? ? 0 : @limits[tenant.api_key] %>
+        </td>
+    </tr>
+    <% end %>
+    <tr>
+        <td>
+            测试用API_KEY
+        </td>
+        <td>
+            <%= Tenant.first.api_key %>
+        </td>
+    </tr>
+</table>
+
+
+
+<h1>API使用注意事项</h1>
+<p>1.API地址：api/v1/questions</p>
+<p>2.json格式返回当前网站所有的公开问题及答案，匿名答案不显示用户信息</p>
+<p>3.在header中添加Authorization:api_key来验证用户身份，每天累计使用次数，超过一百次以后限速10秒一次，隔天重置</p>
+<p>4.可以通过添加key值来查找包含关键字的问题，如api/v1/questions?key=DOTA2</p>
+<p>5.根目录查看目前网站数据及API当日使用情况</p>
+<p>6.可能出现的HTTP CODE</p>
+<table>
+    <tr>
+        <td width="80">200</td>
+        <td>调用成功</td>
+    </tr>
+    <tr>
+        <td>401</td>
+        <td>没有添加API_KEY或者API_KEY无效</td>
+    </tr>
+    <tr>
+        <td>403</td>
+        <td>达到当日访问次数限制，限流至10秒1次</td>
+    </tr>
+    <tr>
+        <td>404</td>
+        <td>没有找到对应的内容，请尝试换一个关键字</td>
+    </tr>
+</table>
+
+<p></p>
